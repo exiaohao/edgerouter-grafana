@@ -9,3 +9,6 @@
 - InfluxDB
 - Telegraf
 
+在安装 InfluxDB 和 Grafana 时为了持久化数据和配置, 为了方便就配置了一个 hostPash(因为只有一台机器, 再 nodeAffifity 把 pod 固化在一台主机就好了), 持久化方式有很多种, 可以按需配置。
+
+在安装 Telegraf 时根据实际情况修改 SNMP 和 InfluxDB 的配置。
