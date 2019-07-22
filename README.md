@@ -14,6 +14,5 @@
 在安装 Telegraf 时根据实际情况修改 SNMP 和 InfluxDB 的配置。
 
 #### 参考文献
-[1] [Grafana Installation for docker](https://grafana.com/docs/installation/docker/)
-
+[1] [Grafana Installation for docker](https://grafana.com/docs/installation/docker/)<br />
 [2] [UBNT EdgeRouter Dashboard](https://grafana.com/grafana/dashboards/1756)
