@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: telegraf
+  namespace: monitor
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: telegraf
+    spec:
+      containers:
+      - image: telegraf:1.11-alpine
+        imagePullPolicy: IfNotPresent
+        name: telegraf
+        ports:
+        - containerPort: 8094
+        - containerPort: 8125
+        - containerPort: 8092
+        volumeMounts:
+        - name: config
+          mountPath: /etc/telegraf/telegraf.conf
+          subPath: telegraf.conf
+      volumes:
+      - name: config
+        configMap:
+          name: telegraf-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: telegraf
+  namespace: monitor
+  labels:
+    app: telegraf
+spec:
+  ports:
+  - name: tcp
+    port: 8094
+  - name: statsd
+    port: 8125
+  - name: udp
+    port: 8092
+  selector:
+    app: telegraf
